@@ -14,10 +14,10 @@ My goal is to understand HTML fundamentals and develop the skills needed to crea
 
 ## 📚 Topics I'm Learning
 
-* [ ] Introduction to HTML
-* [ ] Basic Structure of an HTML Document
-* [ ] HTML Tags and Elements
-* [ ] Headings and Paragraphs
+* [done] Introduction to HTML
+* [done] Basic Structure of an HTML Document
+* [done] HTML Tags and Elements
+* [done] Headings and Paragraphs
 * [ ] Text Formatting
 * [ ] HTML Attributes
 * [ ] Links and Anchor Tags

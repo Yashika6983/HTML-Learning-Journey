@@ -19,6 +19,7 @@ My goal is to understand HTML fundamentals and develop the skills needed to crea
 * [done] HTML Tags and Elements
 * [done] Headings and Paragraphs
 * [ ] Text Formatting
+* [done] Quotation
 * [ ] HTML Attributes
 * [ ] Links and Anchor Tags
 * [ ] Images and File Paths

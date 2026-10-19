@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Program 2 - All Form Elements</title>
+</head>
+<body>
+
+<h2>Program 2: All Form Elements (every input type)</h2>
+
+<form>
+
+  <!-- ===== TEXT ELEMENTS ===== -->
+  <h3>Text elements</h3>
+
+  Text (single line):
+  <input type="text" name="username" placeholder="Enter name">
+  <br><br>
+
+  Password (characters are hidden):
+  <input type="password" name="password">
+  <br><br>
+
+  Email (checks the email format):
+  <input type="email" name="email" placeholder="you@example.com">
+  <br><br>
+
+  Phone number:
+  <input type="tel" name="phone">
+  <br><br>
+
+  Website (checks the URL format):
+  <input type="url" name="website" placeholder="https://">
+  <br><br>
+
+  Search box:
+  <input type="search" name="search">
+  <br><br>
+
+  Number (only numbers allowed, 1 to 100):
+  <input type="number" name="age" min="1" max="100">
+  <br><br>
+
+  Message (multi-line text):<br>
+  <textarea name="message" rows="3" cols="30"></textarea>
+
+  <!-- ===== DATE AND TIME ELEMENTS ===== -->
+  <h3>Date and time elements</h3>
+
+  Date:
+  <input type="date" name="date">
+  <br><br>
+
+  Time:
+  <input type="time" name="time">
+  <br><br>
+
+  Date and time:
+  <input type="datetime-local" name="datetime">
+  <br><br>
+
+  Month:
+  <input type="month" name="month">
+  <br><br>
+
+  Week:
+  <input type="week" name="week">
+
+  <!-- ===== CHOICE ELEMENTS ===== -->
+  <h3>Choice elements</h3>
+
+  Checkbox (you can tick many):<br>
+  <input type="checkbox" name="hobby" value="coding"> Coding
+  <input type="checkbox" name="hobby" value="music"> Music
+  <input type="checkbox" name="hobby" value="sports"> Sports
+  <br><br>
+
+  Radio (you can choose only one, because the name is the same):<br>
+  <input type="radio" name="gender" value="male"> Male
+  <input type="radio" name="gender" value="female"> Female
+  <br><br>
+
+  Dropdown (select):
+  <select name="course">
+    <option value="cse">CSE</option>
+    <option value="ece">ECE</option>
+    <option value="me">Mechanical</option>
+  </select>
+  <br><br>
+
+  Multiple select (hold Ctrl to pick many):<br>
+  <select name="subjects" multiple size="3">
+    <option value="os">Operating Systems</option>
+    <option value="dbms">DBMS</option>
+    <option value="de">Digital Electronics</option>
+  </select>
+
+  <!-- ===== OTHER ELEMENTS ===== -->
+  <h3>Other elements</h3>
+
+  Colour picker:
+  <input type="color" name="color" value="#3366cc">
+  <br><br>
+
+  Slider (range):
+  <input type="range" name="volume" min="0" max="100" value="50">
+  <br><br>
+
+  File upload:
+  <input type="file" name="myfile">
+  <br><br>
+
+  Hidden field (you cannot see it, but it is sent to the server):
+  <input type="hidden" name="user_id" value="101">
+
+  <!-- ===== BUTTONS ===== -->
+  <h3>Buttons</h3>
+
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+  <input type="button" value="Click me" onclick="alert('Button clicked!')">
+
+</form>
+
+</body>
+</html>

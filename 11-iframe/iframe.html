@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Iframe - All Attributes</title>
+</head>
+<body>
+
+<h1>HTML iframe: Tags and Attributes</h1>
+<p>Each example below shows one attribute. Read the comment in the code to see what it does.</p>
+<hr>
+
+<!-- ============================================================ -->
+<h2>1. Basic iframe: src, width, height, title</h2>
+<!-- src    = the page to show inside the frame
+     width  = width of the frame (pixels or %)
+     height = height of the frame
+     title  = describes the frame (needed for screen readers) -->
+<iframe src="https://en.wikipedia.org/wiki/HTML"
+        width="500" height="200"
+        title="Wikipedia page about HTML"></iframe>
+<hr>
+
+<!-- ============================================================ -->
+<h2>2. srcdoc: write HTML directly inside the iframe</h2>
+<!-- srcdoc = HTML code placed in the attribute, no separate file needed.
+     (It takes priority over src if both are given.) -->
+<iframe srcdoc="<h3>Hello from srcdoc</h3><p>This text is written inside the iframe tag itself.</p>"
+        width="400" height="120"
+        title="srcdoc example"></iframe>
+<hr>
+
+<!-- ============================================================ -->
+<h2>3. Width and height in percentage</h2>
+<iframe srcdoc="<p>This frame is 50% as wide as the page.</p>"
+        width="50%" height="80"
+        title="Percentage width"></iframe>
+<hr>
+
+<!-- ============================================================ -->
+<h2>4. name + target: links that open inside the iframe</h2>
+<!-- name   = gives the iframe a name
+     target = on a link, the name of the frame where the page should open -->
+<p>
+  <a href="https://en.wikipedia.org/wiki/HTML" target="myframe">Open HTML page</a> |
+  <a href="https://en.wikipedia.org/wiki/CSS" target="myframe">Open CSS page</a> |
+  <a href="https://en.wikipedia.org/wiki/JavaScript" target="myframe">Open JavaScript page</a>
+</p>
+<iframe name="myframe"
+        srcdoc="<p>Click a link above. The page will open here.</p>"
+        width="500" height="200"
+        title="Frame that links target"></iframe>
+<hr>
+
+
+<!-- ============================================================ -->
+
+<h2>5. allow and allowfullscreen: permissions</h2>
+<!-- allow = permissions the framed page may use
+           (fullscreen, camera, microphone, geolocation, autoplay ...)
+     allowfullscreen = lets the framed content go full screen -->
+<iframe srcdoc="<p>This frame is allowed to use fullscreen and autoplay.</p>"
+        width="400" height="70"
+        allow="fullscreen; autoplay"
+        allowfullscreen
+        title="Permissions example"></iframe>
+<hr>
+
+
+<!-- ============================================================ -->
+<h2>6. Embedding a YouTube video</h2>
+<!-- Use the /embed/ link. Replace VIDEO_ID with the id from the video's URL. -->
+<iframe width="400" height="225"
+        src="https://www.youtube.com/embed/VIDEO_ID"
+        title="YouTube video"
+        allow="fullscreen"
+        allowfullscreen></iframe>
+<hr>
+
+<h2>Summary of attributes used</h2>
+<p>src, srcdoc, width, height, title, name, frameborder, loading,
+   sandbox, allow, allowfullscreen, referrerpolicy.</p>
+
+</body>
+</html>

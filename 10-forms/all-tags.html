@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Program 1 - All Form Tags</title>
+</head>
+<body>
+
+<h2>Program 1: All Form Tags</h2>
+
+  <!-- <fieldset> : draws a box around related controls -->
+  <fieldset>
+    <!-- <legend> : the title of the box -->
+    <legend>Student Details</legend>
+
+    <!-- <label> : names an input. "for" must match the input's id -->
+    <label for="name">Name:</label>
+    <!-- <input> : takes the user's input. type decides what kind -->
+    <input type="text" id="name" name="name" >
+    <br><br>
+
+    <!-- <textarea> : multi-line text box -->
+    <label for="about">About you:</label><br>
+    <textarea id="about" name="about" rows="3" cols="30"></textarea>
+    <br><br>
+
+    <!-- <select> : dropdown list -->
+    <label for="course">Course:</label>
+    <select id="course" name="course">
+      <!-- <optgroup> : groups options under a heading -->
+      <optgroup label="Engineering">
+        <!-- <option> : one item in the list -->
+        <option value="cse">CSE</option>
+        <option value="ece">ECE</option>
+        <option value="me">ME</option>
+        <option value="civil">Civil</option>
+
+
+      </optgroup>
+      <optgroup label="Science">
+        <option value="phy">Physics</option>
+        <option value="math">Maths</option>
+        <option value="chemistry">Chemistry</option>
+
+      </optgroup>
+    </select>
+    <br><br>
+
+    <!-- <datalist> : gives suggestions while typing in an input -->
+    <label for="city">City:</label>
+    <input list="cities" id="city" name="city">
+    <datalist id="cities">
+      <option value="Delhi"></option>
+      <option value="Karnal"></option>
+      <option value="Mumbai"></option>
+      <option value="Rohtak"></option>
+    </datalist>
+    <br><br>
+
+    <!-- <output> : shows a result. Move the slider to see it change -->
+    <label for="marks">Marks:</label>
+    <input type="range" id="marks" name="marks" min="0" max="100" value="50"
+           oninput="result.value = this.value">
+    <output id="result" for="marks">50</output>
+    <br><br>
+
+    <!-- <progress> : shows how much of a task is done -->
+    Progress:
+    <progress value="10" max="100">65%</progress>
+    <br><br>
+
+  </fieldset>
+
+  <br>
+
+  <!-- <button> : a clickable button -->
+  <button type="submit">Submit</button>
+  <button type="reset">Reset</button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashika Ohlyan</title>
+ 
+    <style>
+        /* ---------- COLORS (change them here!) ---------- */
+        :root {
+            --bg: #0e0b1a;
+            --bg-2: #171330;
+            --card: #1e1a3a;
+            --purple: #c99cff;
+            --pink: #ff6ec7;
+            --blue: #4cc9f0;
+            --yellow: #ffd166;
+            --green: #06d6a0;
+            --text: #ffffff;
+            --muted: #b9b4d6;
+            --gradient: linear-gradient(90deg, var(--purple), var(--pink), var(--blue));
+        }
+ 
+        /* GENERAL */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); font-family: Arial, sans-serif; }
+        section { padding: 90px 10%; }
+        .heading { text-align: center; font-size: 38px; margin-bottom: 45px; }
+        .heading span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+ 
+        /* NAVIGATION */
+        header {
+            background: rgba(23, 19, 48, 0.95);
+            padding: 18px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid transparent;
+            border-image: var(--gradient) 1;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo {
+            font-size: 26px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        nav ul { display: flex; list-style: none; gap: 25px; align-items: center; }
+        nav ul li a { text-decoration: none; color: white; transition: 0.3s; }
+        nav ul li a:hover { color: var(--pink); }
+ 
+        /* DROPDOWN */
+        .dropdown { position: relative; }
+        .dropdown-btn { cursor: pointer; }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            background: var(--card);
+            border: 1px solid var(--purple);
+            border-radius: 8px;
+            padding: 8px 0;
+            list-style: none;
+            flex-direction: column;
+            gap: 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        .dropdown-menu li a { display: block; padding: 10px 18px; }
+        .dropdown-menu li a:hover { background: rgba(201, 156, 255, 0.15); }
+        .dropdown:hover .dropdown-menu,
+        .dropdown.open .dropdown-menu { display: flex; }
+ 
+        /* HOME */
+        .home {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 60px 10%;
+            gap: 40px;
+            background: linear-gradient(120deg, #0e0b1a, #2a1458, #0b3a5b, #4a1442, #0e0b1a);
+            background-size: 400% 400%;
+            animation: moveBg 15s ease infinite;
+        }
+        @keyframes moveBg {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .home-content { max-width: 550px; }
+        .welcome { color: var(--yellow); letter-spacing: 4px; margin-bottom: 20px; font-size: 13px; }
+        .home h1 { font-size: 50px; margin-bottom: 15px; }
+        .home h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .home h3 { margin-bottom: 20px; font-size: 22px; color: var(--blue); }
+        .home p { color: var(--muted); line-height: 1.8; margin-bottom: 30px; }
+        .profile-image img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--pink);
+            box-shadow: 0 0 30px rgba(255, 110, 199, 0.5);
+            background: var(--card);
+        }
+        .social { display: flex; gap: 12px; margin-top: 25px; flex-wrap: wrap; }
+ 
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            background: var(--gradient);
+            color: #101010;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255, 110, 199, 0.4); }
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--purple);
+        }
+        .btn-outline:hover { background: var(--purple); color: #101010; }
+ 
+        /* SCROLLING BANNER */
+        .banner {
+            background: var(--gradient);
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 14px 0;
+        }
+        .banner-track {
+            display: inline-block;
+            animation: scroll 25s linear infinite;
+            color: #101010;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+        .banner-track span { margin: 0 30px; }
+        .banner:hover .banner-track { animation-play-state: paused; }
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+ 
+        /* ABOUT */
+        .about { background: var(--bg-2); }
+        .about-content { max-width: 750px; margin: auto; text-align: center; }
+        .about-content p { color: var(--muted); font-size: 17px; line-height: 2; }
+ 
+        /* SKILLS */
+        .skills-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; }
+        .skill-box {
+            background: var(--card);
+            padding: 30px;
+            width: 200px;
+            text-align: center;
+            border: 2px solid #3a3466;
+            border-radius: 12px;
+            transition: 0.3s;
+            border-top: 5px solid var(--c);
+        }
+        .skill-box:hover { border-color: var(--c); transform: translateY(-8px); }
+        .skill-box h3 { color: var(--c); margin-bottom: 10px; }
+        .skill-box p { color: var(--muted); }
+ 
+        /* GALLERY */
+        .gallery-section { background: var(--bg-2); }
+        .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 35px; }
+        .tab {
+            padding: 10px 22px;
+            border-radius: 30px;
+            border: 2px solid var(--c);
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        .tab:hover, .tab.active { background: var(--c); color: #101010; font-weight: bold; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            background: var(--card);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #3a3466;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .gallery-item:hover { transform: scale(1.04); border-color: var(--pink); }
+        .gallery-item img { width: 100%; height: 190px; object-fit: cover; display: block; background: #2a2550; }
+        .gallery-item p { padding: 10px; text-align: center; color: var(--muted); font-size: 14px; }
+        .gallery-item.hide { display: none; }
+ 
+        /* LIGHTBOX (click image to enlarge) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lightbox.show { display: flex; }
+        .lightbox img { max-width: 92%; max-height: 90%; border-radius: 8px; border: 3px solid var(--purple); }
+ 
+        /* CERTIFICATES */
+        .certs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .cert-card {
+            background: var(--card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #3a3466;
+            border-bottom: 5px solid var(--yellow);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .cert-card:hover { transform: translateY(-8px); border-color: var(--yellow); }
+        .cert-card img { width: 100%; height: 210px; object-fit: cover; display: block; background: #2a2550; }
+        .cert-card h3 { color: var(--yellow); padding: 15px 15px 5px; }
+        .cert-card p { color: var(--muted); padding: 0 15px 18px; }
+ 
+        /* PROJECTS */
+        .projects { background: var(--bg-2); }
+        .projects-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .project-card {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #3a3466;
+            border-left: 6px solid var(--c);
+            transition: 0.3s;
+        }
+        .project-card:hover { border-color: var(--c); transform: translateY(-8px); }
+        .project-card h3 { color: var(--c); margin-bottom: 15px; }
+        .project-card p { color: var(--muted); line-height: 1.7; }
+ 
+        /* CONTACT */
+        .contact { text-align: center; }
+        .contact p { color: var(--muted); margin-bottom: 30px; }
+        .contact .social { justify-content: center; }
+ 
+        /* FOOTER */
+        footer { background: var(--bg-2); text-align: center; padding: 25px; color: #888; }
+ 
+        /* MOBILE */
+        @media screen and (max-width: 768px) {
+            nav { flex-direction: column; gap: 15px; }
+            nav ul { gap: 12px; flex-wrap: wrap; justify-content: center; }
+            .dropdown-menu { left: 50%; transform: translateX(-50%); }
+            .home { flex-direction: column-reverse; text-align: center; }
+            .home h1 { font-size: 36px; }
+            .profile-image img { width: 220px; height: 220px; }
+            .social { justify-content: center; }
+            .projects-container { grid-template-columns: 1fr; }
+            .heading { font-size: 30px; }
+        }
+    </style>
+</head>
+ 
+<body>
+ 
+    <!-- NAVIGATION BAR -->
+    <header>
+        <nav>
+            <h2 class="logo">My Corner of life.</h2>
+ 
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+ 
+                <!-- DROPDOWN -->
+                <li class="dropdown">
+                    <a href="#skills" class="dropdown-btn">Skills &#9662;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#gallery" data-filter="html">HTML</a></li>
+                        <li><a href="#gallery" data-filter="css">CSS</a></li>
+                        <li><a href="#gallery" data-filter="python">Python</a></li>
+                        <li><a href="#gallery" data-filter="c">C Language</a></li>
+                    </ul>
+                </li>
+ 
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+ 
+    <!-- HOME -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <div class="welcome">WELCOME TO MY WORLD</div>
+            <h1>Hello, I'm <span>Yashika Ohlyan</span></h1>
+            <h3>Student | Learner | Developer</h3>
+            <p>
+                I am a Computer Science Engineering student
+                passionate about technology, creativity and
+                learning new things.
+ 
+                Welcome to my personal website where I share
+                my journey, interests and projects.
+            </p>
+ 
+            <a href="#about" class="btn">Explore More</a>
+ 
+            <div class="social">
+                <a href="https://github.com/Yashika6983" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+                <a href="https://www.linkedin.com/in/yashika-ohlyan-2398683b9" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+            </div>
+        </div>
+ 
+        <div class="profile-image">
+            <!-- Put your photo in the "images" folder and name it profile-pic.png -->
+            <img src="profile.png" alt="Yashika Ohlyan">
+        </div>
+    </section>
+ 
+    <!-- SCROLLING BANNER -->
+    <div class="banner">
+        <div class="banner-track">
+            <span>HTML</span> ★ <span>CSS</span> ★ <span>PYTHON</span> ★ <span>C LANGUAGE</span> ★ <span>PROBLEM SOLVING</span> ★ <span>CREATIVITY</span> ★ <span>ALWAYS LEARNING</span> ★
+            <span>HTML</span> ★ <span>CSS</span> ★ <span>PYTHON</span> ★ <span>C LANGUAGE</span> ★ <span>PROBLEM SOLVING</span> ★ <span>CREATIVITY</span> ★ <span>ALWAYS LEARNING</span> ★
+        </div>
+    </div>
+ 
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <h2 class="heading">About <span>Me</span></h2>
+        <div class="about-content">
+            <p>
+                Hello! I am a Computer Science Engineering student
+                who believes in continuous learning and personal growth.
+ 
+                I enjoy exploring technology, programming,
+                designing websites and discovering new ideas.
+ 
+                This website is my little corner of the internet
+                where I share my journey, interests, achievements
+                and future goals.
+            </p>
+        </div>
+    </section>
+ 
+    <!-- SKILLS -->
+    <section id="skills">
+        <h2 class="heading">My <span>Skills</span></h2>
+        <div class="skills-container">
+            <div class="skill-box" style="--c: #ff7a45;"><h3>HTML</h3><p>Website Structure</p></div>
+            <div class="skill-box" style="--c: #4cc9f0;"><h3>CSS</h3><p>Website Styling</p></div>
+            <div class="skill-box" style="--c: #ffd166;"><h3>Python</h3><p>Programming</p></div>
+            <div class="skill-box" style="--c: #06d6a0;"><h3>C Language</h3><p>Problem Solving</p></div>
+        </div>
+    </section>
+ 
+    <!-- CODE SCREENSHOT GALLERY -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="heading">Code <span>Gallery</span></h2>
+ 
+        <div class="tabs">
+            <button class="tab active" data-filter="all" style="--c: #c99cff;">All</button>
+            <button class="tab" data-filter="html" style="--c: #ff7a45;">HTML</button>
+            <button class="tab" data-filter="css" style="--c: #4cc9f0;">CSS</button>
+            <button class="tab" data-filter="python" style="--c: #ffd166;">Python</button>
+            <button class="tab" data-filter="c" style="--c: #06d6a0;">C Language</button>
+        </div>
+ 
+        <!--
+            HOW TO ADD A SCREENSHOT:
+            copy one <div class="gallery-item"> block, change data-skill
+            (html / css / python / c), the image name and the caption.
+        -->
+        <div class="gallery">
+ 
+            <div class="gallery-item" data-skill="html">
+                <img src="html1.png" alt="HTML code screenshot 1">
+                <p>HTML – heading
+
+                </p>
+            </div>
+            <div class="gallery-item" data-skill="html">
+                <img src="html2.png" alt="HTML code screenshot 2">
+                <p>HTML – background color</p>
+            </div>
+ 
+            <div class="gallery-item" data-skill="css">
+                <img src="css1.png" alt="CSS borders">
+                <p>CSS – Styling &amp; colors</p>
+            </div>
+            <div class="gallery-item" data-skill="css">
+                <img src="css2.png" alt="CSS code screenshot 2">
+                <p>CSS – background imaging</p>
+            </div>
+ 
+            <div class="gallery-item" data-skill="python">
+                <img src="python1.png" alt="Python code screenshot 1">
+                <p>Python – threading</p>
+            </div>
+            <div class="gallery-item" data-skill="python">
+                <img src="python2.png" alt="Python code screenshot 2">
+                <p>Python – Padding</p>
+            </div>
+ 
+            <div class="gallery-item" data-skill="c">
+                <img src="c1.png" alt="C code screenshot 1">
+                <p>C –loop</p>
+            </div>
+            <div class="gallery-item" data-skill="c">
+                <img src="c2.png" alt="C code screenshot 2">
+                <p>C – 1d array</p>
+            </div>
+ 
+        </div>
+    </section>
+ 
+    <!-- CERTIFICATES -->
+    <section id="certificates">
+        <h2 class="heading">My <span>Certificates</span></h2>
+ 
+        <div class="certs-container">
+            <div class="cert-card">
+                <img src="certificate1.png" alt="Certificate 1">
+                <h3>mastering excel</h3>
+                <p>Issued by – office master</p>
+            </div>
+            <div class="cert-card">
+                <img src="certificate2.png" alt="Certificate 2">
+                <h3>mastering power BI</h3>
+                <p>Issued by – office master</p>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- PROJECTS -->
+    <section class="projects" id="projects">
+        <h2 class="heading">My <span>Projects</span></h2>
+ 
+        <div class="projects-container">
+            <div class="project-card" style="--c: #ff6ec7;">
+                <h3>Personal Website</h3>
+                <p>My first personal website created using HTML and CSS.</p>
+            </div>
+            <div class="project-card" style="--c: #ffd166;">
+                <h3>Python Projects</h3>
+                <p>A collection of small Python projects and programming exercises.</p>
+            </div>
+            <div class="project-card" style="--c: #4cc9f0;">
+                <h3>Future Projects</h3>
+                <p>Exploring new technologies and building creative projects.</p>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+        <p>Have an idea or want to connect? Feel free to contact me.</p>
+ 
+        <div class="social">
+            <a href="mailto:ohlyanyashika@example.com" class="btn">Email Me</a>
+            <a href="https://www.linkedin.com/in/yashika-ohlyan-2398683b9" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+            <a href="https://github.com/Yashika6983" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+        </div>
+    </section>
+ 
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Yashika Ohlyan. All Rights Reserved.</p>
+    </footer>
+ 
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox"><img src="" alt="Enlarged image"></div>
+ 
+    <script>
+        // ----- Gallery filter -----
+        const tabs = document.querySelectorAll('.tab');
+        const items = document.querySelectorAll('.gallery-item');
+ 
+        function filterGallery(skill) {
+            tabs.forEach(t => t.classList.toggle('active', t.dataset.filter === skill));
+            items.forEach(item => {
+                item.classList.toggle('hide', skill !== 'all' && item.dataset.skill !== skill);
+            });
+        }
+ 
+        tabs.forEach(tab => tab.addEventListener('click', () => filterGallery(tab.dataset.filter)));
+ 
+        // ----- Dropdown links filter the gallery too -----
+        document.querySelectorAll('.dropdown-menu a').forEach(link => {
+            link.addEventListener('click', () => filterGallery(link.dataset.filter));
+        });
+ 
+        // ----- Dropdown opens on tap (mobile) -----
+        document.querySelector('.dropdown-btn').addEventListener('click', e => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                e.target.parentElement.classList.toggle('open');
+            }
+        });
+ 
+        // ----- Lightbox: click image to enlarge -----
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+ 
+        document.querySelectorAll('.gallery-item img, .cert-card img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('show');
+            });
+        });
+        lightbox.addEventListener('click', () => lightbox.classList.remove('show'));
+    </script>
+ 
+</body>
+</html>
+ 

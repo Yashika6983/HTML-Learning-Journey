@@ -721,6 +721,117 @@
       font-size: .75rem;
     }
 
+    /* ==================== Justdial reviews ==================== */
+    .justdial-section {
+      background: var(--soft);
+    }
+
+    .justdial-panel {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .justdial-summary {
+      padding: 32px;
+      border-radius: var(--radius);
+      color: white;
+      background: linear-gradient(145deg, var(--navy), #303a9d);
+      box-shadow: var(--shadow);
+    }
+
+    .justdial-brand {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 13px;
+      border-radius: 30px;
+      color: var(--navy);
+      background: #ffcf54;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .justdial-rating {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 8px 0;
+    }
+
+    .justdial-rating strong {
+      color: #ffcf54;
+      font-size: 3.4rem;
+      line-height: 1;
+    }
+
+    .justdial-stars {
+      color: #ffcf54;
+      font-size: 1.25rem;
+      letter-spacing: 3px;
+    }
+
+    .justdial-summary p {
+      margin: 12px 0 22px;
+      color: rgba(255,255,255,.82);
+      font-size: .9rem;
+    }
+
+    .justdial-summary .btn {
+      background: white;
+      color: var(--navy);
+      box-shadow: none;
+    }
+
+    .justdial-review {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: 0 8px 25px rgba(20, 25, 70, .05);
+    }
+
+    .justdial-review-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .justdial-review-top strong {
+      color: var(--navy);
+    }
+
+    .justdial-review time {
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .justdial-review blockquote {
+      color: var(--muted);
+      font-size: .96rem;
+      line-height: 1.8;
+      margin: 14px 0 20px;
+    }
+
+    .justdial-source-note {
+      color: var(--muted);
+      font-size: .75rem;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 650px) {
+      .justdial-panel {
+        grid-template-columns: 1fr;
+      }
+      .justdial-summary,
+      .justdial-review {
+        padding: 25px;
+      }
+    }
+
     /* ==================== Contact ==================== */
     .contact-section {
       background: var(--soft);
@@ -1349,39 +1460,45 @@
       </div>
     </section>
 
-    <!-- ==================== Testimonials ==================== -->
-    <section class="section" id="testimonials">
+    <!-- ==================== Justdial Reviews ==================== -->
+    <section class="section justdial-section" id="testimonials">
       <div class="container">
-        <div class="section-heading"><span class="section-kicker">Student voices</span>
-          <h2 class="section-title">A positive place to learn</h2>
-          <p class="section-intro">A few sample review layouts are included below. Replace these with genuine student
-            feedback and approved names before publishing.</p>
+        <div class="section-heading">
+          <span class="section-kicker">What learners say</span>
+          <h2 class="section-title">Reviews from Justdial</h2>
+          <p class="section-intro">Explore feedback shared by customers on N2P Computer's Justdial listing.</p>
         </div>
-        <div class="testimonial-grid">
-          <article class="testimonial">
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p>“The classes helped me become more comfortable using a computer. The step-by-step practice made learning
-              easier.”</p>
-            <div class="student">
-              <div class="student-avatar">S</div>
-              <div><strong>Student review</strong><small>Basic Computer learner</small></div>
+
+        <div class="justdial-panel">
+          <div class="justdial-summary">
+            <span class="justdial-brand">JUSTDIAL</span>
+            <div class="justdial-rating">
+              <strong>4.9</strong>
+              <span class="justdial-stars" aria-label="Rated 4.9 out of 5">★★★★★</span>
             </div>
-          </article>
-          <article class="testimonial">
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p>“I enjoyed learning in a friendly environment and getting time to practise what was taught in class.”</p>
-            <div class="student">
-              <div class="student-avatar">L</div>
-              <div><strong>Student review</strong><small>Office skills learner</small></div>
+            <p><strong>113 ratings</strong><br>Rating information shown on the Justdial listing when checked. Visit Justdial for the latest rating and review count.</p>
+            <a class="btn" href="https://www.justdial.com/Rohtak/N2P-Computer-Near-Power-House-Near-Medstar-Hospital-Model-Town/9999P1262-1262-230805120800-S2P4_BZDET/reviews" target="_blank" rel="noopener noreferrer">
+              View all Justdial reviews →
+            </a>
+          </div>
+
+          <article class="justdial-review">
+            <div class="justdial-review-top">
+              <strong>Customer review on Justdial</strong>
+              <time datetime="2024-07-03">3 July 2024</time>
             </div>
-          </article>
-          <article class="testimonial">
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p>“The guidance and regular practice helped me improve my confidence with digital tasks.”</p>
+            <div class="justdial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              “N2p Computer is an excellent coaching centre with quality courses and no extra fees. They provide top-notch education and training for computer-related subjects. The instructors are knowledgeable and dedicated to helping students succeed. With a focus on practical learning, N2p Computer ensures that students are well-prepared for the competitive job market.”
+            </blockquote>
             <div class="student">
-              <div class="student-avatar">N</div>
-              <div><strong>Student review</strong><small>Computer course learner</small></div>
+              <div class="student-avatar">J</div>
+              <div>
+                <strong>Justdial customer</strong>
+                <small>Published on Justdial</small>
+              </div>
             </div>
+            <p class="justdial-source-note">Review text and rating details are displayed from Justdial's indexed listing. This HTML-only section cannot automatically fetch live updates; use the button above to see the current reviews directly on Justdial.</p>
           </article>
         </div>
       </div>
@@ -1415,7 +1532,7 @@
             </div>
             <div class="contact-detail">
               <div>✉️</div>
-              <div><b>Email</b><span>Please contact the institute by phone for its current email address.</span></div>
+              <div><b>Email</b><span>n2pcomputer18@gmail.com</span></div>
             </div>
           </div>
           <div class="contact-form">

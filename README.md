@@ -18,19 +18,19 @@ My goal is to understand HTML fundamentals and develop the skills needed to crea
 * [done] Basic Structure of an HTML Document
 * [done] HTML Tags and Elements
 * [done] Headings and Paragraphs
-* [ ] Text Formatting
+* [done] Text Formatting
 * [done] Quotation
-* [ ] HTML Attributes
-* [ ] Links and Anchor Tags
-* [ ] Images and File Paths
-* [ ] Ordered and Unordered Lists
-* [ ] HTML Tables
-* [ ] Forms and Input Elements
-* [ ] Semantic HTML
-* [ ] Audio and Video Elements
-* [ ] HTML Entities
-* [ ] Iframes
-* [ ] Mini Projects and Practice Programs
+* [done] HTML Attributes
+* [done] Links and Anchor Tags
+* [done] Images and File Paths
+* [done] Ordered and Unordered Lists
+* [done] HTML Tables
+* [done] Forms and Input Elements
+* [done] Semantic HTML
+* [done] Audio and Video Elements
+* [done] HTML Entities
+* [done] Iframes
+* [done] Mini Projects and Practice Programs
 
 *I'll update this checklist as I learn and practice each topic.*
 
@@ -39,7 +39,8 @@ My goal is to understand HTML fundamentals and develop the skills needed to crea
 ## 💻 Tools I'm Using
 
 * **HTML** — To create the structure of web pages.
-* **Notepad** — To write and edit code.
+* **Notepad** — To write and edit code while starting the basics and learning from the basics.
+* **Vs code** _ To code after learning the basics.
 * **Web Browser** — To run and test my HTML files.
 * **Git and GitHub** — To manage my code and track my learning progress.
 * **Linkedin** _ To track and document my learning.

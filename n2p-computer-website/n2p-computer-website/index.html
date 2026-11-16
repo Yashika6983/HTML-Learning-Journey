@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="N2P Computer Institute, Sampla — practical computer training and digital skills courses affiliated with RGCSM.">
+  <title>N2P Computer Institute | Sampla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==================== Theme and global styles ==================== */
+    :root {
+      --navy: #171b55;
+      --blue: #252c85;
+      --blue-light: #eef0ff;
+      --red: #e31e2b;
+      --ink: #20233a;
+      --muted: #697087;
+      --paper: #ffffff;
+      --soft: #f6f7fc;
+      --line: #e8eaf2;
+      --shadow: 0 16px 45px rgba(26, 31, 91, .11);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { font-family: 'Poppins', sans-serif; color: var(--ink); background: var(--paper); line-height: 1.7; }
+    img { display: block; max-width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    .container { width: min(1160px, 92%); margin-inline: auto; }
+    .section { padding: 88px 0; }
+    .section-kicker { color: var(--red); font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .section-title { color: var(--navy); font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.2; margin: 10px 0 14px; }
+    .section-intro { max-width: 660px; color: var(--muted); }
+    .section-heading { margin-bottom: 38px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 25px; border: 0; border-radius: 999px; background: var(--red); color: white; font-weight: 700; box-shadow: 0 9px 22px rgba(227,30,43,.22); transition: transform .25s, box-shadow .25s, background .25s; }
+    .btn:hover, .btn:focus { background: #c91421; transform: translateY(-3px); box-shadow: 0 14px 28px rgba(227,30,43,.28); }
+
+    /* ==================== Sticky navigation ==================== */
+    .site-header { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav-wrap { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 230px; }
+    .brand img { width: 58px; height: 58px; border-radius: 50%; object-fit: contain; background: white; }
+    .brand-name { color: var(--navy); font-weight: 800; font-size: 1.08rem; line-height: 1.15; }
+    .brand-name small { display: block; color: var(--muted); font-size: .66rem; font-weight: 500; margin-top: 4px; }
+    .nav-links { display: flex; align-items: center; gap: clamp(12px, 2vw, 26px); list-style: none; }
+    .nav-links a { color: #3d425b; font-size: .88rem; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover, .nav-links a:focus { color: var(--red); }
+    .nav-links .nav-cta { color: white; background: var(--blue); padding: 10px 17px; border-radius: 30px; }
+    .nav-links .nav-cta:hover { color: white; background: var(--red); }
+    #menu-toggle { position: absolute; opacity: 0; pointer-events: none; }
+    .menu-button { display: none; cursor: pointer; color: var(--navy); font-size: 1.8rem; line-height: 1; padding: 8px; }
+
+    /* ==================== Hero ==================== */
+    .hero { min-height: 650px; display: flex; align-items: center; position: relative; isolation: isolate; color: white; background: var(--navy); overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: url('images/gallery1.jpg') center 43% / cover no-repeat; /* replace with your image */ transform: scale(1.02); }
+    .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10,13,55,.94) 0%, rgba(16,20,76,.78) 54%, rgba(16,20,76,.34) 100%); }
+    .hero-content { max-width: 760px; padding: 90px 0; }
+    .hero-tag { display: inline-block; padding: 7px 14px; border: 1px solid rgba(255,255,255,.4); border-radius: 30px; background: rgba(255,255,255,.1); font-size: .82rem; font-weight: 600; margin-bottom: 22px; }
+    .hero h1 { font-size: clamp(2.7rem, 6.5vw, 5.3rem); line-height: 1.08; letter-spacing: -.04em; margin-bottom: 22px; }
+    .hero h1 span { color: #ffcf54; }
+    .hero p { max-width: 620px; color: rgba(255,255,255,.86); font-size: clamp(1rem, 1.8vw, 1.15rem); margin-bottom: 30px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    .btn-outline { display: inline-flex; padding: 12px 23px; border: 1px solid rgba(255,255,255,.65); border-radius: 999px; font-weight: 600; transition: background .2s, color .2s; }
+    .btn-outline:hover { background: white; color: var(--navy); }
+    .hero-note { margin-top: 28px; color: rgba(255,255,255,.75); font-size: .83rem; }
+
+    /* ==================== About ==================== */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
+    .about-photo { position: relative; }
+    .about-photo img { width: 100%; height: 440px; border-radius: 28px; box-shadow: var(--shadow); }
+    .about-stamp { position: absolute; right: -18px; bottom: 24px; padding: 18px 22px; max-width: 190px; color: white; background: var(--red); border-radius: 16px; box-shadow: var(--shadow); font-weight: 700; }
+    .about-copy p { color: var(--muted); margin: 14px 0; }
+    .mission { margin: 22px 0; padding: 18px 20px; border-left: 4px solid var(--red); border-radius: 0 14px 14px 0; background: var(--soft); }
+    .mission strong { color: var(--navy); }
+    .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 24px; }
+    .highlight { display: flex; gap: 10px; align-items: flex-start; color: #454b64; font-size: .9rem; font-weight: 600; }
+    .highlight span { color: var(--red); font-size: 1.15rem; }
+
+    /* ==================== Courses ==================== */
+    .courses-section { background: var(--soft); }
+    .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .course-card { padding: 27px; background: white; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 5px 20px rgba(20,25,70,.04); transition: transform .25s, box-shadow .25s, border-color .25s; }
+    .course-card:hover, .course-card:focus-within { transform: translateY(-8px); box-shadow: var(--shadow); border-color: #c9cdf5; }
+    .course-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 15px; background: var(--blue-light); font-size: 1.55rem; margin-bottom: 18px; }
+    .course-card h3 { color: var(--navy); font-size: 1.12rem; margin-bottom: 8px; }
+    .course-card p { color: var(--muted); font-size: .9rem; }
+    .course-link { display: inline-block; color: var(--red); font-weight: 700; font-size: .85rem; margin-top: 17px; }
+
+    /* ==================== Events: CSS-only auto carousel ==================== */
+    .events-section { overflow: hidden; }
+    .event-carousel { position: relative; overflow: hidden; border-radius: 26px; background: var(--navy); box-shadow: var(--shadow); }
+    .event-track { display: flex; width: 400%; animation: event-slide 6s infinite; }
+    .event-carousel:hover .event-track { animation-play-state: paused; }
+    .event-slide { width: 25%; min-height: 380px; position: relative; flex: 0 0 25%; display: grid; grid-template-columns: 1.05fr .95fr; color: white; }
+    .event-slide img { width: 100%; height: 100%; min-height: 380px; }
+    .event-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(25px, 5vw, 55px); background: linear-gradient(135deg, #171b55, #303a9d); }
+    .event-copy small { color: #ffcf54; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .event-copy h3 { font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.2; margin: 13px 0; }
+    .event-copy p { color: rgba(255,255,255,.8); font-size: .92rem; }
+    .event-nav { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; background: #111443; color: white; font-size: .82rem; }
+    .event-nav a { color: #ffcf54; font-weight: 700; }
+    .event-dots { display: flex; gap: 8px; }
+    .event-dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.4); }
+    .event-dots span:first-child { background: #ffcf54; }
+    @keyframes event-slide {
+      0%, 20% { transform: translateX(0); }
+      25%, 45% { transform: translateX(-25%); }
+      50%, 70% { transform: translateX(-50%); }
+      75%, 95% { transform: translateX(-75%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* ==================== Gallery and :target lightbox ==================== */
+    .gallery-section { background: var(--soft); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .gallery-item { position: relative; display: block; overflow: hidden; min-height: 210px; border-radius: 16px; background: #ddd; }
+    .gallery-item img { width: 100%; height: 100%; min-height: 210px; transition: transform .45s; }
+    .gallery-item:hover img, .gallery-item:focus img { transform: scale(1.08); }
+    .gallery-caption { position: absolute; inset: auto 0 0; padding: 34px 14px 13px; color: white; font-size: .88rem; font-weight: 600; background: linear-gradient(transparent, rgba(8,10,35,.85)); }
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 2000; padding: 5vh 4vw; background: rgba(5,7,28,.94); align-items: center; justify-content: center; }
+    .lightbox:target { display: flex; }
+    .lightbox img { max-width: min(1000px, 92vw); max-height: 86vh; border-radius: 12px; object-fit: contain; }
+    .lightbox-close { position: absolute; top: 22px; right: 28px; color: white; font-size: 2.4rem; line-height: 1; }
+
+    /* ==================== Stats ==================== */
+    .stats-section { padding: 60px 0; color: white; background: linear-gradient(110deg, var(--navy), #303a9d); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+    .stat { padding: 14px; }
+    .stat strong { display: block; color: #ffcf54; font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.2; animation: stat-pop 1.2s ease both; }
+    .stat span { display: block; color: rgba(255,255,255,.82); margin-top: 8px; font-size: .9rem; }
+    @keyframes stat-pop { from { opacity: 0; transform: translateY(16px) scale(.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+    /* ==================== Testimonials ==================== */
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .testimonial { padding: 27px; border: 1px solid var(--line); border-radius: var(--radius); background: white; box-shadow: 0 8px 25px rgba(20,25,70,.05); }
+    .stars { color: #f2ae22; letter-spacing: 3px; }
+    .testimonial p { color: var(--muted); font-size: .91rem; margin: 15px 0 20px; }
+    .student { display: flex; align-items: center; gap: 12px; }
+    .student-avatar { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; color: white; background: var(--blue); font-weight: 700; }
+    .student strong { display: block; color: var(--navy); font-size: .9rem; }
+    .student small { color: var(--muted); font-size: .75rem; }
+
+    /* ==================== Contact ==================== */
+    .contact-section { background: var(--soft); }
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 28px; align-items: stretch; }
+    .contact-info { padding: 32px; border-radius: var(--radius); color: white; background: linear-gradient(145deg, var(--navy), #303a9d); }
+    .contact-info h3 { font-size: 1.5rem; margin-bottom: 12px; }
+    .contact-info > p { color: rgba(255,255,255,.78); margin-bottom: 25px; font-size: .9rem; }
+    .contact-detail { display: flex; gap: 13px; margin: 19px 0; align-items: flex-start; }
+    .contact-detail b { display: block; font-size: .9rem; }
+    .contact-detail span { display: block; color: rgba(255,255,255,.78); font-size: .85rem; overflow-wrap: anywhere; }
+    .contact-form { padding: 32px; border-radius: var(--radius); background: white; box-shadow: var(--shadow); }
+    .contact-form h3 { color: var(--navy); font-size: 1.4rem; margin-bottom: 20px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { margin-bottom: 15px; }
+    .field label { display: block; margin-bottom: 6px; color: #424760; font-size: .83rem; font-weight: 600; }
+    .field input, .field textarea { width: 100%; border: 1px solid #dfe2ed; border-radius: 10px; padding: 12px 14px; outline: none; color: var(--ink); background: #fcfcff; transition: border .2s, box-shadow .2s; }
+    .field input:focus, .field textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,44,133,.1); }
+    .field textarea { min-height: 115px; resize: vertical; }
+    .form-note { color: var(--muted); font-size: .75rem; margin-top: 12px; }
+    .map-wrap { margin-top: 28px; overflow: hidden; border-radius: 18px; box-shadow: var(--shadow); }
+    .map-wrap iframe { width: 100%; height: 300px; border: 0; display: block; }
+
+    /* ==================== Footer ==================== */
+    .site-footer { padding: 55px 0 20px; color: rgba(255,255,255,.78); background: #10133f; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 38px; }
+    .footer-brand { display: flex; align-items: center; gap: 11px; color: white; font-weight: 800; font-size: 1.1rem; margin-bottom: 15px; }
+    .footer-brand img { width: 48px; height: 48px; border-radius: 50%; background: white; object-fit: contain; }
+    .footer-grid p { font-size: .85rem; }
+    .footer-grid h4 { color: white; margin-bottom: 15px; }
+    .footer-links { list-style: none; display: grid; gap: 8px; font-size: .85rem; }
+    .footer-links a:hover { color: #ffcf54; }
+    .socials { display: flex; gap: 10px; margin-top: 16px; }
+    .socials a { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.12); transition: background .2s, transform .2s; }
+    .socials a:hover { background: var(--red); transform: translateY(-3px); }
+    .copyright { padding-top: 18px; border-top: 1px solid rgba(255,255,255,.15); text-align: center; font-size: .78rem; }
+
+    /* ==================== Tablet and mobile layouts ==================== */
+    @media (max-width: 900px) {
+      .menu-button { display: block; }
+      .nav-links { position: absolute; top: 82px; left: 0; right: 0; display: none; align-items: stretch; flex-direction: column; gap: 0; padding: 10px 4% 18px; background: white; border-bottom: 1px solid var(--line); box-shadow: var(--shadow); }
+      .nav-links li a { display: block; padding: 12px 8px; }
+      .nav-links .nav-cta { display: inline-block; margin-top: 7px; padding-inline: 18px; }
+      #menu-toggle:checked ~ .nav-links { display: flex; }
+      #menu-toggle:focus-visible ~ .menu-button { outline: 2px solid var(--red); outline-offset: 4px; }
+      .about-grid { gap: 35px; }
+      .course-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .section { padding: 65px 0; }
+      .nav-wrap { min-height: 72px; }
+      .brand { min-width: 0; }
+      .brand img { width: 48px; height: 48px; }
+      .brand-name { font-size: .95rem; }
+      .brand-name small { font-size: .58rem; }
+      .nav-links { top: 72px; }
+      .hero { min-height: 590px; }
+      .hero::after { background: linear-gradient(90deg, rgba(10,13,55,.92), rgba(16,20,76,.64)); }
+      .hero-content { padding: 75px 0; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-photo img { height: 320px; }
+      .about-stamp { right: 10px; bottom: 12px; }
+      .course-grid, .testimonial-grid { grid-template-columns: 1fr; }
+      .event-slide { grid-template-columns: 1fr; }
+      .event-slide img { min-height: 230px; max-height: 260px; }
+      .event-copy { min-height: 235px; }
+      .event-nav { padding: 13px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .gallery-item, .gallery-item img { min-height: 155px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 5px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .contact-info, .contact-form { padding: 25px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 25px 18px; }
+    }
+    @media (max-width: 390px) {
+      .brand-name { font-size: .84rem; }
+      .brand img { width: 42px; height: 42px; }
+      .highlights { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ==================== Header / Navbar ==================== -->
+  <header class="site-header">
+    <nav class="container nav-wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="N2P Computer Institute home">
+        <img src="images/logo.png" alt="RGCSM Skills educational trust logo"> <!-- replace with your image -->
+        <span class="brand-name">N2P COMPUTER<small>Institute · Sampla, Haryana</small></span>
+      </a>
+      <input type="checkbox" id="menu-toggle" aria-label="Toggle navigation menu">
+      <label class="menu-button" for="menu-toggle" aria-hidden="true">☰</label>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#courses">Courses</a></li>
+        <li><a href="#events">Events</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact">Contact</a></li>
+        <li><a class="nav-cta" href="#contact">Enquire Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================== Hero ==================== -->
+    <section class="hero" id="home">
+      <div class="container"><div class="hero-content">
+        <span class="hero-tag">RGCSM-affiliated computer training centre</span>
+        <h1>Build Skills.<br><span>Shape Your Future.</span></h1>
+        <p>Learn practical computer skills with supportive guidance at N2P Computer Institute, Sampla. Take your first step towards a more confident digital future.</p>
+        <div class="hero-actions"><a class="btn" href="#contact">Enroll Now <span aria-hidden="true">→</span></a><a class="btn-outline" href="#courses">Explore Courses</a></div>
+        <div class="hero-note">Practical learning · Friendly guidance · Career-focused skills</div>
+      </div></div>
+    </section>
+
+    <!-- ==================== About Us ==================== -->
+    <section class="section" id="about"><div class="container about-grid">
+      <div class="about-photo">
+        <img src="images/gallery2.jpg" alt="Students and instructor together at N2P Computer Institute"> <!-- replace with your image -->
+        <div class="about-stamp">Learn today.<br>Lead tomorrow.</div>
+      </div>
+      <div class="about-copy">
+        <span class="section-kicker">Who we are</span><h2 class="section-title">A place to learn, practise and grow.</h2>
+        <p>N2P Computer Institute is a computer training centre in Sampla, Haryana, affiliated with RGCSM. We help learners build useful digital knowledge through structured lessons and hands-on practice.</p>
+        <div class="mission"><strong>Our mission</strong><p>To make computer education approachable and practical, so every learner can use technology with confidence in education, work and everyday life.</p></div>
+        <div class="highlights">
+          <div class="highlight"><span>✓</span> Practical, hands-on learning</div><div class="highlight"><span>✓</span> Supportive learning environment</div>
+          <div class="highlight"><span>✓</span> Courses for different skill levels</div><div class="highlight"><span>✓</span> RGCSM affiliation</div>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- ==================== Courses ==================== -->
+    <section class="section courses-section" id="courses"><div class="container">
+      <div class="section-heading"><span class="section-kicker">What you can learn</span><h2 class="section-title">Courses designed for real skills</h2><p class="section-intro">Start with the fundamentals or build on what you already know. Choose a course that matches your learning goals.</p></div>
+      <div class="course-grid">
+        <article class="course-card"><div class="course-icon">💻</div><h3>Basic Computer</h3><p>Understand computer fundamentals, operating systems, files, folders and everyday digital tasks.</p><a class="course-link" href="#contact">Ask about this course →</a></article>
+        <article class="course-card"><div class="course-icon">📊</div><h3>MS Office</h3><p>Develop practical skills in documents, spreadsheets, presentations and office productivity tools.</p><a class="course-link" href="#contact">Ask about this course →</a></article>
+        <article class="course-card"><div class="course-icon">🧾</div><h3>Tally</h3><p>Learn accounting workflows, entries, ledgers and business record-keeping fundamentals.</p><a class="course-link" href="#contact">Ask about this course →</a></article>
+        <article class="course-card"><div class="course-icon">🎓</div><h3>DCA / ADCA</h3><p>Build broader computer application knowledge through a structured diploma-level course.</p><a class="course-link" href="#contact">Ask about this course →</a></article>
+        <article class="course-card"><div class="course-icon">⌨️</div><h3>Typing</h3><p>Improve typing speed, accuracy and confidence with regular guided practice.</p><a class="course-link" href="#contact">Ask about this course →</a></article>
+        <article class="course-card"><div class="course-icon">🌐</div><h3>Web Design</h3><p>Get introduced to creating websites and learn the foundations of HTML and CSS.</p><a class="course-link" href="#contact">Ask about this course →</a></article>
+      </div>
+    </div></section>
+
+    <!-- ==================== Events: CSS-only auto carousel ==================== -->
+    <section class="section events-section" id="events"><div class="container">
+      <div class="section-heading"><span class="section-kicker">Life at N2P</span><h2 class="section-title">Learning moments & events</h2><p class="section-intro">A glimpse of student achievements, classroom activities and special moments at the institute.</p></div>
+      <div class="event-carousel" aria-label="Automatically sliding event highlights; pause by hovering over the carousel">
+        <div class="event-track">
+          <article class="event-slide"><img src="images/gallery1.jpg" alt="Students proudly displaying certificates at a centre event"> <!-- replace with your image --><div class="event-copy"><small>Student achievement</small><h3>Celebrating learning milestones</h3><p>Recognising learners and the effort they put into developing new computer skills.</p></div></article>
+          <article class="event-slide"><img src="images/gallery2.jpg" alt="Students and faculty sharing a group moment at the institute"> <!-- replace with your image --><div class="event-copy"><small>Community at N2P</small><h3>Growing together</h3><p>A welcoming learning space where students and instructors share knowledge and encouragement.</p></div></article>
+          <article class="event-slide"><img src="images/gallery3.jpg" alt="Student receiving a certificate from an instructor"> <!-- replace with your image --><div class="event-copy"><small>Recognition</small><h3>Every achievement matters</h3><p>Celebrating progress, dedication and the confidence that comes with learning.</p></div></article>
+          <article class="event-slide"><img src="images/gallery4.jpg" alt="Instructor working at her desk in the computer training centre"> <!-- replace with your image --><div class="event-copy"><small>Behind the scenes</small><h3>Guidance at every step</h3><p>Focused instruction and individual support help learners move forward at their own pace.</p></div></article>
+        </div>
+        <div class="event-nav"><a href="#events" aria-label="Previous event">← Previous</a><div class="event-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div><a href="#gallery" aria-label="Next event; view gallery">Next →</a></div>
+      </div>
+    </div></section>
+
+    <!-- ==================== Image Gallery / Lightbox ==================== -->
+    <section class="section gallery-section" id="gallery"><div class="container">
+      <div class="section-heading"><span class="section-kicker">Our memories</span><h2 class="section-title">A look inside N2P</h2><p class="section-intro">Real moments from our classrooms, student activities and certificate celebrations. Select any photo to view it larger.</p></div>
+      <div class="gallery-grid">
+        <a class="gallery-item" href="#photo1"><img src="images/gallery1.jpg" alt="Group of students holding certificates at N2P Computer Institute"> <!-- replace with your image --><span class="gallery-caption">Certificate celebration</span></a>
+        <a class="gallery-item" href="#photo2"><img src="images/gallery2.jpg" alt="Students and instructors posing together in the classroom"> <!-- replace with your image --><span class="gallery-caption">Our learning community</span></a>
+        <a class="gallery-item" href="#photo3"><img src="images/gallery3.jpg" alt="Student receiving a certificate from an instructor"> <!-- replace with your image --><span class="gallery-caption">Student achievement</span></a>
+        <a class="gallery-item" href="#photo4"><img src="images/gallery4.jpg" alt="Instructor working at her desk"> <!-- replace with your image --><span class="gallery-caption">Meet the team</span></a>
+        <a class="gallery-item" href="#photo5"><img src="images/gallery5.jpg" alt="Group of students gathered with their instructor"> <!-- replace with your image --><span class="gallery-caption">Classroom moments</span></a>
+        <a class="gallery-item" href="#photo6"><img src="images/gallery6.jpg" alt="Student standing with instructors while receiving a certificate"> <!-- replace with your image --><span class="gallery-caption">A proud moment</span></a>
+        <a class="gallery-item" href="#photo7"><img src="images/gallery7.jpg" alt="Group of female students posing together at the institute"> <!-- replace with your image --><span class="gallery-caption">Learning together</span></a>
+        <a class="gallery-item" href="#photo8"><img src="images/gallery8.jpg" alt="Group of male students posing in the computer classroom"> <!-- replace with your image --><span class="gallery-caption">Student community</span></a>
+      </div>
+    </div></section>
+    <!-- Lightbox overlays use CSS :target; no JavaScript required. -->
+    <div class="lightbox" id="photo1"><a class="lightbox-close" href="#gallery" aria-label="Close image">×</a><img src="images/gallery1.jpg" alt="Students holding certificates at N2P"></div>
+    <div class="lightbox" id="photo2"><a class="lightbox-close" href="#gallery" aria-label="Close image">×</a><img src="images/gallery2.jpg" alt="Students and instructors together"></div>
+    <div class="lightbox" id="photo3"><a class="lightbox-close" href="#gallery" aria-label="Close image">×</a><img src="images/gallery3.jpg" alt="Student receiving a certificate"></div>
+    <div class="lightbox" id="photo4"><a class="lightbox-close" href="#gallery" aria-label="Close image">×</a><img src="images/gallery4.jpg" alt="Instructor at her desk"></div>
+    <div class="lightbox" id="photo5"><a class="lightbox-close" href="#gallery" aria-label="Close image">×</a><img src="images/gallery5.jpg" alt="Students gathered with their instructor"></div>
+    <div class="lightbox" id="photo6"><a class="lightbox-close" href="#gallery" aria-label="Close image">×</a><img src="images/gallery6.jpg" alt="Certificate presentation moment"></div>
+    <div class="lightbox" id="photo7"><a class="lightbox-close" href="#gallery" aria-label="Close image">×</a><img src="images/gallery7.jpg" alt="Female students group photo"></div>
+    <div class="lightbox" id="photo8"><a class="lightbox-close" href="#gallery" aria-label="Close image">×</a><img src="images/gallery8.jpg" alt="Male students group photo"></div>
+
+    <!-- ==================== Stats ==================== -->
+    <section class="stats-section"><div class="container stats-grid">
+      <div class="stat"><strong>RGCSM</strong><span>Affiliated training centre</span></div>
+      <div class="stat"><strong>6+</strong><span>Learning areas featured</span></div>
+      <div class="stat"><strong>1:1</strong><span>Supportive guidance</span></div>
+      <div class="stat"><strong>100%</strong><span>Commitment to learning</span></div>
+    </div></section>
+
+    <!-- ==================== Testimonials ==================== -->
+    <section class="section" id="testimonials"><div class="container">
+      <div class="section-heading"><span class="section-kicker">Student voices</span><h2 class="section-title">A positive place to learn</h2><p class="section-intro">A few sample review layouts are included below. Replace these with genuine student feedback and approved names before publishing.</p></div>
+      <div class="testimonial-grid">
+        <article class="testimonial"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>“The classes helped me become more comfortable using a computer. The step-by-step practice made learning easier.”</p><div class="student"><div class="student-avatar">S</div><div><strong>Student review</strong><small>Basic Computer learner</small></div></div></article>
+        <article class="testimonial"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>“I enjoyed learning in a friendly environment and getting time to practise what was taught in class.”</p><div class="student"><div class="student-avatar">L</div><div><strong>Student review</strong><small>Office skills learner</small></div></div></article>
+        <article class="testimonial"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>“The guidance and regular practice helped me improve my confidence with digital tasks.”</p><div class="student"><div class="student-avatar">N</div><div><strong>Student review</strong><small>Computer course learner</small></div></div></article>
+      </div>
+    </div></section>
+
+    <!-- ==================== Contact ==================== -->
+    <section class="section contact-section" id="contact"><div class="container">
+      <div class="section-heading"><span class="section-kicker">Get in touch</span><h2 class="section-title">Your next step starts here</h2><p class="section-intro">Ask about course details, batch timings, fees and admissions. Contact the centre using the details below.</p></div>
+      <div class="contact-grid">
+        <div class="contact-info"><h3>Visit or call us</h3><p>We would be happy to help you find a course that fits your goals.</p>
+          <div class="contact-detail"><div>📍</div><div><b>Address</b><span>N2P Computer Institute, bhaiya wali gali , opppsite bus stand , Sampla, Haryana, India</span></div></div>
+          <div class="contact-detail"><div>📞</div><div><b>Phone</b><span><a href="tel:+919350505280">+91 93505 05280</a><br><a href="tel:+919812008036">+91 98120 08036</a></span></div></div>
+          <div class="contact-detail"><div>🏷️</div><div><b>Affiliation</b><span>RGCSM Skills · Vocational Courses</span></div></div>
+          <div class="contact-detail"><div>✉️</div><div><b>Email</b><span>Please contact the institute by phone for its current email address.</span></div></div>
+        </div>
+        <div class="contact-form"><h3>Send an enquiry</h3>
+          <!-- HTML-only demo form: connect a form endpoint to receive submissions. -->
+          <form action="#contact" method="get">
+            <div class="form-row"><div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" placeholder="Enter your name" required></div><div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="Enter phone number" required></div></div>
+            <div class="field"><label for="course">Course interested in</label><input id="course" name="course" type="text" placeholder="e.g. Basic Computer, Tally"></div>
+            <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us what you would like to know..."></textarea></div>
+            <button class="btn" type="submit">Submit enquiry →</button>
+            <p class="form-note">Demo form only: connect this form to a form-handling service or backend before publishing. No message is sent by this HTML file alone.</p>
+          </form>
+        </div>
+      </div>
+      <div class="map-wrap">
+<iframe
+  src="https://maps.google.com/maps?q=28.7718176,76.769084&z=17&output=embed"
+  width="100%"
+  height="350"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+    </div></section>
+  </main>
+
+  <!-- ==================== Footer ==================== -->
+  <footer class="site-footer"><div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand"><img src="images/logo.png" alt="RGCSM logo"> <!-- replace with your image -->N2P Computer</div><p>Practical computer education and digital skills training in Sampla, Haryana. Affiliated with RGCSM.</p><div class="socials"><a href="#contact" aria-label="Facebook">f</a><a href="#contact" aria-label="Instagram">◎</a><a href="#contact" aria-label="YouTube">▶</a></div></div>
+      <div><h4>Quick links</h4><ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#about">About us</a></li><li><a href="#courses">Courses</a></li><li><a href="#events">Events</a></li></ul></div>
+      <div><h4>Explore</h4><ul class="footer-links"><li><a href="#gallery">Gallery</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#contact">Admissions</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Contact</h4><ul class="footer-links"><li>Near Bus Stand, Sampla</li><li><a href="tel:+919350505280">+91 93505 05280</a></li><li><a href="tel:+919812008036">+91 98120 08036</a></li></ul></div>
+    </div>
+    <div class="copyright">© 2026 N2P Computer Institute, Sampla. All rights reserved.</div>
+  </div></footer>
+</body>
+</html>
